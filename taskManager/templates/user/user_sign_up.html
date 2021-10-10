@@ -1,12 +1,16 @@
 {% extends 'task/main.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
+{% load static %}
 
 <div class="header-bar">
-    <h1>Register</h1>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </div>
 
-<div class="card-body">
-    <form method="POST">
+<div class="login-container">
+    <div class="login-info-container">
+        <h1 class="title">Register</h1>
+    <form class="inputs-container" method="POST">
         {% csrf_token %}
         <label>{{form.username.label}}</label>
         {{form.username}}
@@ -16,12 +20,13 @@
 
         <label>{{form.password2.label}}</label>
         {{form.password2}}
-        <input style="margin-top:10px ;" class="button" type="submit" value="Register">
+        <input class="btn" style="margin-top:10px ;" type="submit" value="Register">
     </form>
-    <p>Already have an account? <a href="{% url 'user_login' %}">Login</a></p>
+    <p>Already have an account? <a class="span" href="{% url 'user_login' %}">Login</a></p>
+    </div>
+    <img class="image-container" src="/static/images/login-img.PNG" alt="login-img">
+
 </div>
-
-
 
 
 {% endblock content %}

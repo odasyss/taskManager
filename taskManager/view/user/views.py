@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 
-class RegisterPage(FormView):
+class UserSignUpListView(FormView):
     template_name = 'user/user_sign_up.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
@@ -20,16 +20,16 @@ class RegisterPage(FormView):
         user = form.save()
         if user is not None:
             login(self.request, user)
-        return super(RegisterPage, self).form_valid(form)
+        return super(UserSignUpListView, self).form_valid(form)
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('tasks')
-        return super(RegisterPage, self).get(*args, **kwargs)
+        return super(UserSignUpListView, self).get(*args, **kwargs)
 
 
 
-class CustomLoginView(LoginView):
+class UserLoginListView(LoginView):
     template_name = 'user/user_login.html'
     fields = '__all__'
     redirect_authenticated_user = True
