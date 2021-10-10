@@ -9,6 +9,12 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    projectname = models.CharField(max_length=200, default="")
+    subtask = models.CharField(max_length=200, default="")
+    summary = models.TextField(null=True, blank=True)
+    label = models.CharField(max_length=200, blank=True)
+    sprint = models.CharField(max_length=200, default="")
+    status = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return self.title
