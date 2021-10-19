@@ -105,6 +105,7 @@ input {
     transform: translateY(4px);/*Move down*/
     border-bottom: none;/*disappears*/
 }
+
 .btn:hover {
     background-color: var(--button-hover);
 }

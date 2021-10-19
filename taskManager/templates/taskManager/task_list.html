@@ -3,25 +3,31 @@
 {% load static %}
 
 <div class="header-bar">
-    <div> 
+    <div>        
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <h1>Hello {{request.user|title}}</h1>
         <h3 style="margin:0">You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}</h3>
     </div>
 
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'user_logout' %}">Logout</a> {% else %}
-    <a href="{% url 'user_login' %}">Login</a> {% endif %}
+  
 </div>
 
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
             <img class="bx bx-menu" id="header-toggle" width="40px" src="/static/images/burger-menu.jpg" alt="burger menu">
+       
+        <div class="header-logout">  
+            <img class="exit-icon" src="/static/images/exit.png" alt="burger menu">
+            {% if request.user.is_authenticated %}
+                <a class="header-text" href="{% url 'user_logout' %}">Logout</a> 
+            {% else %}
+                <a class="header-text" href="{% url 'user_login' %}">Login</a> 
+            {% endif %} 
+            <div> </div>
         </div>
-        <div class="header_img">
-            
-        </div>
+    </div>
     </header>
     
     <div class="l-navbar" id="nav-bar">
@@ -52,24 +58,41 @@
         </nav>
     </div>
 
-    <h1> Components </h1>
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
 
-<h1>My SCRUM To Do List</h1>
-<a href="{% url 'task_form' %}"> Add Task </a>
-
-<table>
-    <tr>
-        <th>Task</th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td>
-            {{task.title}}
-            <a href="{% url 'task_update' task.pk %}">Edit</a>
-        </td>
-    </tr>
-        {% endfor %}
-</table>
+<h1>SCRUM Manager</h1>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Project Name</th>
+                <th>Sprint</th>
+                <th>Status</th>
+                <th>Sub-Task</th>   
+                <th></th>
+            </tr>
+            
+            {% for task in tasks %}
+                <tr>
+                    <td>{{task.title}}</td>
+                    <td>{{task.projectname}}</td>
+                    <td>{{task.sprint}}</td>
+                    <td>{{task.status}}</td>
+                    <td>{{task.subtask}}</td>
+                    <td>
+                        <div style="margin: 22px 0px;">
+                            <span><a href="{% url 'task' task.pk %}"class="btn btn-style btn-detail">Detail</a> </span> 
+                            <span><a href="{% url 'task_update' task.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+                            <span><a href="{% url 'task_delete' task.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}     
+        </table>
+                
+        <div class="btn-add-task">
+            <a class="btn" style="font-size: 1rem;" href="{% url 'task_form' %}"> Add Task </a>
+        </div>
+    </div>
 {% endblock content %}
