@@ -75,12 +75,12 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-  
+
 td, th {
     border-bottom: 1px solid #7a7a7a;
     text-align: center;
 }
-  
+
 tr {
     background-color: rgba(196, 196, 196, 0.12);
 }

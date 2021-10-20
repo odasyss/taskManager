@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <h1>Hello {{request.user|title}}</h1>
-        <h3 style="margin:0">You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}</h3>
+        <h3 style="margin:0">You have <i>{{count}}</i> incomplete tasks{{ count|pluralize:"s" }}</h3>
     </div>
 
-  
+
 </div>
 
 <body id="body-pd">

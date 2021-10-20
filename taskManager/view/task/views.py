@@ -8,7 +8,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from taskManager.model.task.models import Task
-# from model.task import Task //Can't connect to model/task
+
 
 
 class TaskList(ListView):
