@@ -15,7 +15,6 @@
     <header class="header" id="header">
         <div class="header_toggle">
             <img class="bx bx-menu" id="header-toggle" width="40px" src="/static/images/burger-menu.jpg" alt="burger menu">
-       
         <div class="header-logout">  
             <img class="exit-icon" src="/static/images/exit.png" alt="burger menu">
             {% if request.user.is_authenticated %}
@@ -60,7 +59,7 @@
 <div class="header-back-button">
     <a href="{% url 'tasks' %}">&#8592; Go Back</a>
 </div>
-<script src="{% static 'js/main.js' %}"></script>  
+<!-- <script src="{% static 'js/main.js' %}"></script>   -->
 <body>
     <div class="table-container">
         <table>
@@ -72,7 +71,6 @@
                 <th>Sub-Task</th>   
                 <th></th>
             </tr>
-        
             <tr>
                 <td>{{tasks.title}}</td>
                 <td>{{tasks.description}}</td>
@@ -87,6 +85,7 @@
                 </td>
             </tr>
     
-    {% endblock content %}
+
 </body>
 </html>
+{% endblock content %}

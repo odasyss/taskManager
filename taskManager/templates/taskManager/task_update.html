@@ -3,6 +3,9 @@
 {% block title %} Update Task{% endblock title %}
 
 {% block content %}
+<div class="header-back-button">
+    <a href="{% url 'tasks' %}">&#8592; Go Back</a>
+</div>
     <div class="form-container">
         <h1>Update Task</h1>
         <form method="POST">
