@@ -1,5 +1,4 @@
 from django.db import models
-from taskManager.model.project.models import Project
 
 
 class Sprint(models.Model):
