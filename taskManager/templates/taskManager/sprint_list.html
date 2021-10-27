@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <h1>Hello {{request.user|title}}</h1>
     </div>
-
-
 </div>
 
 <body id="body-pd">
@@ -57,38 +55,12 @@
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
 
-<h1>SCRUM Manager</h1>
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Project Name</th>
-                <th>Sprint</th>
-                <th>Status</th>
-                <th>Sub-Task</th>   
-                <th></th>
-            </tr>
-            {% for task in tasks %}
-                <tr>
-                    <td>{{task.title}}</td>
-                    <td>{{task.projectname}}</td>
-                    <td>{{task.sprint}}</td>
-                    <td>{{task.status}}</td>
-                    <td>{{task.subtask}}</td>
-                    <td>
-                        <div style="margin: 22px 0px;">
-                            <span><a href="{% url 'task' task.pk %}"class="btn btn-style btn-detail">Detail</a> </span> 
-                            <span><a href="{% url 'task_update' task.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
-                            <span><a href="{% url 'task_delete' task.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
-                        </div>
-                    </td>
-                </tr>   
-                {% endfor %}
-        </table>
-                
-        <div class="btn-add-task">
-            <a class="btn" style="font-size: 1rem;" href="{% url 'task_form' %}"> Add Task </a>
-            <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Add Sprint </a>
-        </div>
-    </div>
+
+
+<h1>Sprint list</h1>
+<a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
+
+
+
+    
 {% endblock content %}

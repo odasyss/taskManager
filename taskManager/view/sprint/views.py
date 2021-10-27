@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
@@ -20,6 +21,9 @@ class SprintViewSet(LoginRequiredMixin, DetailView):
 #     model = Sprint
 #     context_object_name = 'sprint'
 #     template_name = 'sprint/main.html'
+class SprintListView(ListView):
+    model = Sprint
+    template_name = "sprint_list.html"
 
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
