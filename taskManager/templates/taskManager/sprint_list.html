@@ -57,19 +57,32 @@
 
 <h1>Sprint list</h1>
 <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
-
-{% for sprint in sprints %}
-<tr>
-    <td>{{sprint.title}}</td>
-    <td>
-        <div style="margin: 22px 0px;">
-            <span><a href="{% url 'sprint' sprint.pk %}"class="btn btn-style btn-detail">Complete</a> </span> 
-            <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
-            <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
-        </div>
-    </td>
-</tr>   
-{% endfor %}
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            {% for sprint in sprints %}
+                <tr>
+                    <td>{{sprint.name}}</td>
+                    <td>{{sprint.description}}</td>
+                    <td>{{sprint.start}}</td>
+                    <td>{{sprint.Duration}}</td>
+                    <td>{{sprint.end}}</td>
+                    <td>
+                        <div style="margin: 22px 0px;">
+                            <span><a href="{% url 'sprint' sprint.pk %}"class="btn btn-style btn-detail">Complete</a> </span> 
+                            <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+                            <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
+                        </div>
+                    </td>
+                </tr>   
+                {% endfor %}
+        </table>
+            
+    </div>
 
     
 {% endblock content %}
