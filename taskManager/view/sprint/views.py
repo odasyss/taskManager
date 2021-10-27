@@ -24,12 +24,12 @@ class SprintViewSet(LoginRequiredMixin, DetailView):
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'
-    success_url = reverse_lazy('tasks')
     template_name = "sprint/sprint_delete.html"
+    success_url = reverse_lazy('tasks')
 
-    def get_queryset(self):
-        owner = self.request.user
-        return self.model.objects.filter(user=owner)
+    # def get_queryset(self):
+    #     owner = self.request.user
+    #     return self.model.objects.filter(user=owner)
 
 class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
