@@ -55,23 +55,33 @@
 
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
+<div class="table-container">
+<table>
 <tr>
     <th>Name</th>
     <th>description</th>
     <th>Start</th>
-    <th>Status</th>
+    <th>Duration</th>
     <th>End</th>   
-    <th></th>
 </tr>
-{% for sprints in sprint %}
+    <tr>
+        <td>{{sprint.name}}</td>
+            <td>{{sprint.description}}</td>
+            <td>{{sprint.start}}</td>
+            <td>{{sprint.duration}}</td>
+            <td>{{sprint.end}}</td>
+            
+    </tr>
+</table>
+<!-- {% for sprint in sprints %}
     <tr>
         <td>{{sprint.name}}</td>
         <td>{{sprint.description}}</td>
         <td>{{sprint.start}}</td>
-        <td>{{sprints.end}}</td>
+        <td>{{sprint.end}}</td>
         <td>{{sprint.duration}}</td>
-        <td>
-    {% endfor %}
+    </tr>
+    {% endfor %} -->
 
 <div class="btn-add-task">
     <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Add Sprint </a>
