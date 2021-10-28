@@ -34,11 +34,11 @@
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
                 <div class="nav_list"> 
-                    <a href="#" class="nav_link active">
+                    <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
                     </a>
-                    <a href="{% url 'sprint_backlog' %}" class="nav_link">
+                    <a href="{% url 'sprint_list' %}" class="nav_link">
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
@@ -56,33 +56,61 @@
 </body>
 
 <h1>Sprint list</h1>
+
+
 <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
     <div class="table-container">
         <table>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th></th>
+                <th>Start</th>
+                <th>Duration</th>
+                <th>End</th>
             </tr>
+            
+        {% for task in tasks %}
             {% for sprint in sprints %}
                 <tr>
-                    <td>{{sprint.name}}</td>
+                    <td>{{sprint.name.id}}</td>
                     <td>{{sprint.description}}</td>
                     <td>{{sprint.start}}</td>
                     <td>{{sprint.Duration}}</td>
                     <td>{{sprint.end}}</td>
                     <td>
-                        <div style="margin: 22px 0px;">
-                            <span><a href="{% url 'sprint' sprint.pk %}"class="btn btn-style btn-detail">Complete</a> </span> 
-                            <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
-                            <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
-                        </div>
+                        
                     </td>
                 </tr>   
-                {% endfor %}
+            {% endfor %}
+            {% endfor %}
         </table>
             
     </div>
 
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Project Name</th>
+            <th>Sprint</th>
+            <th>Status</th>
+            <th>Sub-Task</th>   
+            <th></th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.title}}</td>
+                <td>{{task.projectname}}</td>
+                <td>{{task.sprint}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.subtask}}</td>
+                <td>
+                   
+                </td>
+            </tr>   
+            {% endfor %}
+    </table>
+</div>
     
 {% endblock content %}

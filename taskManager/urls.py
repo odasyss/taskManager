@@ -16,7 +16,7 @@ urlpatterns = [
     path('task-update/<int:pk>/', TaskUpdate.as_view(), name='task_update'), 
     path('task-delete/<int:pk>/', DeleteView.as_view(), name='task_delete'),
 
-    path('sprint/', SprintListView.as_view(), name='sprint_backlog'), 
+    path('sprint/', SprintListView.as_view(), name='sprint_list'), 
     path('sprint-create/', SprintCreate.as_view(), name='sprint_form'), 
     path('sprint/<int:pk>/', SprintViewSet.as_view(), name='sprint'), 
     path('sprint-update/<int:pk>/', SprintUpdate.as_view(), name='sprint_update'), 

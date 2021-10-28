@@ -11,7 +11,7 @@ class SprintViewSet(LoginRequiredMixin, DetailView):
     context_object_name = 'sprint'
     fields = '__all__'
     template_name = "sprint/sprint.html"
-    success_url = reverse_lazy('sprint')
+    success_url = reverse_lazy('tasks')
 
 
     search_fields = ('name',)
@@ -24,7 +24,6 @@ class SprintViewSet(LoginRequiredMixin, DetailView):
 class SprintListView(ListView):
     model = Sprint
     template_name = "sprint_list.html"
-
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'
@@ -38,12 +37,12 @@ class SprintDeleteView(LoginRequiredMixin, DeleteView):
 class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
     fields = '__all__'
-    template_name = "sprint/sprint_form.html"
-    success_url = reverse_lazy('sprint')
+    success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(SprintCreate, self).form_valid(form)
+
 
 class SprintUpdate(LoginRequiredMixin, UpdateView):
     model = Sprint

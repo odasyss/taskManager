@@ -32,11 +32,11 @@
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
                 <div class="nav_list"> 
-                    <a href="#" class="nav_link active">
+                    <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
                     </a>
-                    <a href="{% url 'sprint_backlog' %}" class="nav_link">
+                    <a href="{% url 'sprint_list' %}" class="nav_link">
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
