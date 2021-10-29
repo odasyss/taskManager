@@ -4,13 +4,13 @@
 {% load static %}
 
 <div class="header-back-button">
-    <a href="{% url 'tasks' %}">&#8592; Go Back</a>
+    <a href="{% url 'sprint_list' %}">&#8592; Back</a>
 </div>
 
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
-        <p>Are your sure you want to delete this task? <b>"{{sprint}}"</b> </p>
+        <p>Are your sure you want to delete this sprint? <b>"{{sprint}}"</b> </p>
         <input class="button" type="submit" value="Delete" />
     </form>
 </div>

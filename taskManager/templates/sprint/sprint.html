@@ -10,7 +10,6 @@
 
 
 </div>
-
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -35,11 +34,11 @@
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
                 <div class="nav_list"> 
-                    <a href="#" class="nav_link active">
+                    <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="{% url 'sprint_list' %}" class="nav_link">
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
@@ -54,36 +53,33 @@
     </div>
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
+<div class="header-back-button">
+    <a href="{% url 'sprint_list' %}">&#8592; Back</a>
+</div>
 <div class="table-container">
-<table>
-<tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Start</th>
-    <th>Duration</th>
-    <th>End</th>   
-</tr>
-    <tr>
-        <td>{{sprint.name}}</td>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>description</th>
+            <th>Start</th>
+            <th>Status</th>
+            <th>End</th>   
+            <th></th>
+        </tr>
+        <tr>
+            
+            <td>{{sprint.name}}</td>
             <td>{{sprint.description}}</td>
             <td>{{sprint.start}}</td>
+            <td>{{sprints.end}}</td>
             <td>{{sprint.duration}}</td>
-            <td>{{sprint.end}}</td>
-            
-    </tr>
-</table>
-<!-- {% for sprint in sprints %}
-    <tr>
-        <td>{{sprint.name}}</td>
-        <td>{{sprint.description}}</td>
-        <td>{{sprint.start}}</td>
-        <td>{{sprint.end}}</td>
-        <td>{{sprint.duration}}</td>
-    </tr>
-    {% endfor %} -->
+        </tr>
+        </table>
+</div>
 
 <div class="btn-add-task">
-    <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Add Sprint </a>
+    <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+    <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
 </div>
 </div>
 {% endblock content %}

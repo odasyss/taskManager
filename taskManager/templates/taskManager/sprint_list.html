@@ -1,17 +1,16 @@
-{% extends 'task/main.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
-<div class="header-back-button">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/task.css' %}">
-    <link rel="stylesheet" href="{% static 'css/task_delete.css' %}">
-    <div class="header-back-button">
-        <a href="{% url 'tasks' %}">&#8592; Go Back</a>
+
+<div class="header-bar">
+    <div>        
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/task.css' %}">
+        <h1>Hello {{request.user|title}}</h1>
     </div>
 </div>
 
-<div id="body-pd">
+<body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
             <img class="bx bx-menu" id="header-toggle" width="40px" src="/static/images/burger-menu.jpg" alt="burger menu">
@@ -47,25 +46,68 @@
                     <a href="#" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
-                    </a>
+                    </a>  
                 </div>
             </div>
         </nav>
     </div>
 
     <script src="{% static 'js/main.js' %}"></script>  
-</div>
-<div>
-    <h1 class="delete-title"> DELETE TASK</h1>
-    <div class="background-delete">  
-        <div class="card-body">
-            <form method="POST">
-                {% csrf_token %}
-                <p>Are your sure you want to delete this task? <b>"{{tasks}}"</b> </p>
-                <input class="button" type="submit" value="Delete Task">
-            </form>
-        </div>
-    </div>
-</div>
+</body>
 
+<h1>Sprint list</h1>
+
+
+<a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Start</th>
+                <th>Duration</th>
+                <th>End</th>
+            </tr>
+            
+        {% for task in tasks %}
+            {% for sprint in sprints %}
+                <tr>
+                    <td>{{sprint.name.id}}</td>
+                    <td>{{sprint.description}}</td>
+                    <td>{{sprint.start}}</td>
+                    <td>{{sprint.Duration}}</td>
+                    <td>{{sprint.end}}</td>
+                    <td>
+                        
+                    </td>
+                </tr>   
+            {% endfor %}
+        {% endfor %}
+        </table>
+            
+    </div>
+
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Project Name</th>
+            <th>Sprint</th>
+            <th>Status</th>
+            <th>Sub-Task</th> 
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.title}}</td>
+                <td>{{task.projectname}}</td>
+                <td>{{task.sprint}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.subtask}}</td>
+                </td>
+            </tr>   
+            {% endfor %}
+    </table>
+</div>
+    
 {% endblock content %}
