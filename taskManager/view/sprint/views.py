@@ -17,13 +17,11 @@ class SprintViewSet(LoginRequiredMixin, DetailView):
     search_fields = ('name',)
     ordering_fields = ('end', 'name',)
 
-# class SprintDetail(LoginRequiredMixin, DetailView):
-#     model = Sprint
-#     context_object_name = 'sprint'
-#     template_name = 'sprint/main.html'
 class SprintListView(ListView):
     model = Sprint
-    template_name = "sprint_list.html"
+    context_object_name = 'sprint'
+    template_name = "sprint/sprint_list.html"
+    
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'

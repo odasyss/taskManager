@@ -7,11 +7,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from taskManager.model.task.models import Task
 
-
-
 class TaskList(ListView):
     model = Task
     context_object_name = 'tasks'
+    template_name = "task/task_list.html"
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
