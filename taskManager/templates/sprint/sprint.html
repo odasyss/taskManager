@@ -1,17 +1,18 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
-
+<div class="header-back-button">
+    <a href="{% url 'sprint_list' %}">&#8592; Back</a>
+</div>
 <div class="header-bar">
     <div>        
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
+        <link rel="stylesheet" href="{% static 'css/task_detail.css' %}">
     </div>
-
-
 </div>
 
-<body id="body-pd">
+<div id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
             <img class="bx bx-menu" id="header-toggle" width="40px" src="/static/images/burger-menu.jpg" alt="burger menu">
@@ -54,29 +55,26 @@
     </div>
 
     <script src="{% static 'js/main.js' %}"></script>  
-</body>
-<div class="table-container">
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>description</th>
-            <th>Start</th>
-            <th>Status</th>
-            <th>End</th>   
-            <th></th>
-        </tr>
-        <tr>
-            <td>{{sprint.name}}</td>
-            <td>{{sprint.description}}</td>
-            <td>{{sprint.start}}</td>
-            <td>{{sprints.end}}</td>
-            <td>{{sprint.duration}}</td>
-        </tr>
-        </table>
 </div>
 
-<div class="btn-add-task">
-    <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Add Sprint </a>
+<h1 class="task-title"> SPRINT DETAIL</h1>
+<div class="background-form">  
+    <div class="row">
+        <div class="column">
+            <div><p>Name <span class="info">{{sprint.name}}</span></p></div>
+            <div><p>Description <span class="info">{{sprint.description}}</span></p></div>
+            <div><p>Start <span class="info">{{sprint.start}}</span></p></div>
+        </div>
+        <div class="column">
+            <div><p>Duration <span class="info">{{sprint.Duration}}</span></p></div>
+            <div><p>End <span class="info">{{sprint.end}}</span></p></div>
+           
+            <div  class="task-title" style="margin: 12px 0px;">
+                <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+                <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 {% endblock content %}

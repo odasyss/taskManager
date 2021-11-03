@@ -1,7 +1,9 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
-
+<div class="header-back-button">
+    <a href="{% url 'sprint_list' %}">&#8592; Back</a>
+</div>
 <div class="header-bar">
     <div>        
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -56,32 +58,35 @@
 </body>
 
 <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Start</th>
-                <th>Duration</th>
-                <th>End</th>
-            </tr>
-            
-            {% for sprint in object_list %}
-                <tr>
-                    <td>{{sprint.name}}</td>
-                    <td>{{sprint.description}}</td>
-                    <td>{{sprint.start}}</td>
-                    <td>{{sprint.Duration}}</td>
-                    <td>{{sprint.end}}</td>
-                    <td>
-                        
-                    </td>
-                </tr>   
-            {% endfor %}
-        </table>
-            
-    </div>
-
+<div class="table-container">
+    {% for sprint in object_list %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start</th>
+            <th>Duration</th>
+            <th>End</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{sprint.name}}</td>
+            <td>{{sprint.description}}</td>
+            <td>{{sprint.start}}</td>
+            <td>{{sprint.Duration}}</td>
+            <td>{{sprint.end}}</td>
+            <td>
+                <div style="margin: 22px 0px;">
+                    <span><a href="{% url 'sprint' sprint.pk %}"class="btn btn-style btn-detail">Detail</a> </span> 
+                    <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+                    <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
+                </div>
+            </td>
+        </tr>   
+    </table>  
+    <br />
+{% endfor %}      
+</div>
 
 <div class="table-container">
     <table>

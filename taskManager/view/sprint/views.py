@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
+from taskManager.model.task.models import Task
 
 
 class SprintViewSet(LoginRequiredMixin, DetailView):
@@ -21,16 +22,24 @@ class SprintListView(ListView):
     model = Sprint
     context_object_name = 'sprint'
     template_name = "sprint/sprint_list.html"
-    
+   # queryset = Task.objects.all().filter(sprint=self.request.id)
+
+    #def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        #context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        #context['sprint_list'] = Task.objects.all()
+        #return context
+
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'
     success_url = reverse_lazy('tasks')
     template_name = "sprint/sprint_delete.html"
 
-    def get_queryset(self):
-        owner = self.request.user
-        return self.model.objects.filter(user=owner)
+    #def get_queryset(self):
+    #    owner = self.request.user
+    #    return self.model.objects.filter(user=owner)
 
 class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
