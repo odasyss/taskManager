@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taskManager.model.sprint.models import Sprint
+from taskManager.model.project.models import Project
 
 
 # Create your models here.
@@ -14,7 +15,7 @@ class Task(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=200)
-    projectname = models.CharField(max_length=200, default="")
+    projectname = models.ForeignKey(Project,on_delete=models.CASCADE, max_length=30, default="")
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)   
