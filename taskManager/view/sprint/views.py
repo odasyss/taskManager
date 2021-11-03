@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import query
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -22,7 +23,13 @@ class SprintListView(ListView):
     model = Sprint
     context_object_name = 'sprint'
     template_name = "sprint/sprint_list.html"
-   # queryset = Task.objects.all().filter(sprint=self.request.id)
+
+    def get_context_data(self, **kwargs):
+        context = super(SprintListView, self).get_context_data(**kwargs)
+        # context['Sprint'] = Sprint.objects.get()
+        context['tasks'] = Task.objects.all()
+        return context
+# queryset = Task.objects.all().filter(sprint=self.request.id)
 
     #def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

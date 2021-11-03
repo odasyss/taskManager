@@ -99,14 +99,14 @@
             <th></th>
         </tr>
         {% for task in tasks %}
+        
             <tr>
-                <td>{{task.title}}</td>
+                <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
                 <td>{{task.projectname}}</td>
                 <td>{{task.sprint}}</td>
                 <td>{{task.status}}</td>
                 <td>{{task.subtask}}</td>
                 <td>
-                   
                 </td>
             </tr>   
             {% endfor %}
