@@ -6,7 +6,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
 from taskManager.model.task.models import Task
-
+from django import template
+from django.contrib.auth.models import Group
+register = template.Library()
 
 class SprintViewSet(LoginRequiredMixin, DetailView):
     model = Sprint
@@ -29,6 +31,15 @@ class SprintListView(ListView):
         # context['Sprint'] = Sprint.objects.get()
         context['tasks'] = Task.objects.all()
         return context
+    #@register.filter
+    #def in_task(Task, name):
+    #    return Task.filter(name=name)
+
+    #def get_context_data(self, **kwargs):
+    #    context = super(SprintListView, self).get_context_data(**kwargs)
+        # context['Sprint'] = Sprint.objects.get()
+    #    context['tasks'] = Task.objects.all()
+    #    return context
 # queryset = Task.objects.all().filter(sprint=self.request.id)
 
     #def get_context_data(self, **kwargs):

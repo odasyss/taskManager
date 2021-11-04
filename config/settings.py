@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+# settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -116,8 +119,6 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = 'login'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

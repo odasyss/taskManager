@@ -1,7 +1,5 @@
-{% extends 'task/main.html' %}
-
+{% extends 'taskManager/task_list.html' %}
 {% block title %} Update Task{% endblock title %}
-
 {% block content %}
 {% load static %}
 
@@ -9,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/task.css' %}">
     <link rel="stylesheet" href="{% static 'css/task_update.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_form.css' %}">
     <div class="header-back-button">
         <a href="{% url 'tasks' %}">&#8592; Back</a>
     </div>

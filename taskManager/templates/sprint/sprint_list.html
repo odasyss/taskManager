@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 <div class="header-back-button">
-    <a href="{% url 'tasks' %}">&#8592; Back To Task</a>
+    <a href="{% url 'sprint_list' %}">&#8592; Back</a>
 </div>
 <div class="header-bar">
     <div>        
@@ -11,7 +11,6 @@
         <h1>Hello {{request.user|title}}</h1>
     </div>
 </div>
-
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -44,8 +43,7 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-
-                    <a href="{% url 'project_list' %}" class="nav_link">
+                    <a href="#" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
                     </a>  
@@ -53,10 +51,8 @@
             </div>
         </nav>
     </div>
-
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
-
 <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
 <div class="table-container">
     {% for sprint in object_list %}
@@ -81,36 +77,37 @@
                     <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
                     <span><a href="{% url 'sprint_delete' sprint.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
                 </div>
-            </td>
-        </tr>   
-    </table>  
-    <br />
+            </td>  
+            <div class="table-container">
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Project Name</th>
+                    <th>Sprint</th>
+                    <th>Status</th>
+                    <th>Sub-Task</th>   
+                    <th></th>
+                </tr>
+                {% for task in tasks %}
+                    {% if sprint == task.sprint %}
+                    
+                    <tr>
+                        <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
+                        <td>{{task.projectname}}</td>
+                        <td>{{task.sprint}}</td>
+                        <td>{{task.status}}</td>
+                        <td>{{task.subtask}}</td>
+                        <td></td>
+                    </tr>   
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        </table>  
+        <br />
+       
+    </div> 
 {% endfor %}      
-</div>
-
-<div class="table-container">
-    <table>
-        <tr>
-            <th>Sprint</th>
-            <th>Project Name</th>
-            <th>Title</th>    
-            <th>Status</th>
-            <th>Sub-Task</th>   
-            <th></th>
-        </tr>
-        {% for task in tasks %}
-        
-            <tr>
-                <td>{{task.sprint}}</td>
-                <td>{{task.projectname}}</td>
-                <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
-                <td>{{task.status}}</td>
-                <td>{{task.subtask}}</td>
-                <td>
-                </td>
-            </tr>   
-            {% endfor %}
-    </table>
-</div>
-    
+</div>    
 {% endblock content %}
+  
