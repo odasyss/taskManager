@@ -54,8 +54,9 @@
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
 <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
+{% for sprint in object_list %}
 <div class="table-container">
-    {% for sprint in object_list %}
+    
     <table>
         <tr>
             <th>Name</th>
@@ -79,35 +80,35 @@
                 </div>
             </td>  
             <div class="table-container">
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Project Name</th>
-                    <th>Sprint</th>
-                    <th>Status</th>
-                    <th>Sub-Task</th>   
-                    <th></th>
-                </tr>
-                {% for task in tasks %}
-                    {% if sprint == task.sprint %}
-                    
+                <table>
                     <tr>
-                        <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
-                        <td>{{task.projectname}}</td>
-                        <td>{{task.sprint}}</td>
-                        <td>{{task.status}}</td>
-                        <td>{{task.subtask}}</td>
-                        <td></td>
-                    </tr>   
-                    {% endif %}
-                {% endfor %}
-            </table>
-        </div>
+                        <th>Title</th>
+                        <th>Project Name</th>
+                        <th>Sprint</th>
+                        <th>Status</th>
+                        <th>Sub-Task</th>   
+                        <th></th>
+                    </tr>
+                    {% for task in tasks %}
+                        {% if sprint == task.sprint %}
+                        <tr>
+                            <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
+                            <td>{{task.projectname}}</td>
+                            <td>{{task.sprint}}</td>
+                            <td>{{task.status}}</td>
+                            <td>{{task.subtask}}</td>
+                            <td></td>
+                        </tr>   
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </tr>
         </table>  
         <br />
        
-    </div> 
-{% endfor %}      
+{% endfor %} 
+    </div>      
 </div>    
 {% endblock content %}
   
