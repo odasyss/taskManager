@@ -13,9 +13,9 @@ class Task(models.Model):
     ('Review', 'Review'),
     ('Done', 'Done'),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
     title = models.CharField(max_length=200)
-    projectname = models.ForeignKey(Project,on_delete=models.CASCADE, max_length=30, default="")
+    projectname = models.ForeignKey(Project,on_delete=models.CASCADE, max_length=30, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)   
@@ -27,5 +27,5 @@ class Task(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['complete']
+        ordering = ['projectname']
 

@@ -75,6 +75,30 @@
                     <span><a href="{% url 'project_delete' project.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
                 </div>
             </td>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Project Name</th>
+                        <th>Sprint</th>
+                        <th>Status</th>
+                        <th>Sub-Task</th>   
+                        <th></th>
+                    </tr>
+                    {% for task in tasks %}
+                        {% if project == task.projectname %}
+                        <tr>
+                            <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>
+                            <td>{{task.projectname}}</td>
+                            <td>{{task.sprint}}</td>
+                            <td>{{task.status}}</td>
+                            <td>{{task.subtask}}</td>
+                            <td></td>
+                        </tr>   
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
         </tr>   
     </table>  
     <br />
