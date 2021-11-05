@@ -1,0 +1,43 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+span{
+    margin-right: 3rem;
+}
+
+.background-sprint {
+    margin: auto;
+    width: 70%;
+    border-radius: 1rem;
+    background-color: #f2f2f2;
+    padding: 1rem;
+}
+
+.task-container {
+    display: inline-block;
+    width: 100%;
+    background-color: #DAF4FC;
+    color: rgb(78, 75, 75);
+    padding: 14px 20px;
+    margin: 8px 2px;
+    border-radius: 2rem;
+    cursor: pointer;
+    height: 3rem;
+    font-family: initial;
+}
+
+.task-container:hover {
+    background-color: #00327c;
+    color: white;
+}
+
+.sprint-title{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.align-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
