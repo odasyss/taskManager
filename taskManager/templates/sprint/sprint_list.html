@@ -10,8 +10,24 @@
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <link rel="stylesheet" href="{% static 'css/sprint_list.css' %}">
         <h1>Hello {{request.user|title}}</h1>
+        
+        <!--<div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+              <span>project.name</span>
+            </div>-->
+            <select>
+                <option selected>---------</option>
+                {% for project in object_list %}
+                    <option>{{project.name}}</option>
+                {% endfor %}
+              </select>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        </div> 
     </div>
 </div>
+<br />
 <div id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -56,10 +72,13 @@
 </div>
 <body>
     <a class="btn" style="font-size: 1rem;" href="{% url 'sprint_form' %}"> Create Sprint </a>
+  
+ 
 
     {% for sprint in object_list %}
         <div class="background-sprint">
         <p><span class="sprint-title">{{sprint.name}} </span><span>{{sprint.start}} - {{sprint.end}}</span>
+            <span class="title">title: {{sprint.project.name}}</span>
             <span class="align-buttons">
                 <span><a href="{% url 'sprint' sprint.pk %}"class="btn btn-style btn-detail">Detail</a> </span> 
                 <span><a href="{% url 'sprint_update' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
@@ -72,7 +91,7 @@
                     <div class="task-container">
                         <a href="{% url 'task' task.pk %}">
                             <span>{{task.title}}</span>
-                            <span>{{task.projectname}}</span>
+                            <!-- <span>{{task.projectname}}</span> -->
                             <span>{{task.sprint}}</span>
                             <span>{{task.status}}</span>
                             <span>{{task.subtask}}</span>
@@ -84,7 +103,6 @@
     </div>
     <br />
     {% endfor %}
-
     <!--
     {% for sprint in object_list %}
     <div class="table-container">
