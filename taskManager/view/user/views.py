@@ -3,12 +3,12 @@ from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
-from taskManager.model.task.models import Task
+#from taskManager.model.task.models import Task
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-
+from taskManager.models import Task
 
 class UserSignUpListView(FormView):
     template_name = 'user/user_sign_up.html'

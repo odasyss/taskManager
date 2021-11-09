@@ -1,11 +1,13 @@
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import  CreateView
-from taskManager.model.task.models import Task
+#from taskManager.model.task.models import Task
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from taskManager.model.task.models import Task
+#from taskManager.model.task.models import Task
+
+from taskManager.models import Task
 
 class TaskList(ListView):
     model = Task

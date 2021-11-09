@@ -3,9 +3,10 @@ from django.db.models import query
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from taskManager.model.sprint.models import Sprint
+#from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
-from taskManager.model.task.models import Task
+#from .model.task.models import Task
+from taskManager.models import Sprint, Task
 from django import template
 from django.contrib.auth.models import Group
 register = template.Library()
