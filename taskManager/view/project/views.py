@@ -28,8 +28,9 @@ class ProjectListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectListView, self).get_context_data(**kwargs)
-        context['Sprint'] = Sprint.objects.all()
+        context['sprints'] = Sprint.objects.all()
         context['tasks'] = Task.objects.all()
+        context['projects'] = Project.objects.all()
         return context
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):

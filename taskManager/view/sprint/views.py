@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 #from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
 #from .model.task.models import Task
-from taskManager.models import Sprint, Task
+from taskManager.models import Sprint, Task, Project
 from django import template
 from django.contrib.auth.models import Group
 register = template.Library()
@@ -28,8 +28,9 @@ class SprintListView(ListView):
     template_name = "sprint/sprint_list.html"
 
     def get_context_data(self, **kwargs):
-        context = super(SprintListView, self).get_context_data(**kwargs)
-        # context['Sprint'] = Sprint.objects.get()
+        context = super(SprintListView, self).get_context_data(**kwargs)   
+        context['projects'] = Project.objects.all()
+        context['sprints'] = Sprint.objects.all()
         context['tasks'] = Task.objects.all()
         return context
     #@register.filter

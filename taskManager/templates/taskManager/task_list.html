@@ -68,7 +68,7 @@
             {% for task in tasks %}
                 <tr>
                     <td>{{task.title}}</td>
-                    <!--<td>{{task.projectname}}</td>-->
+                    <td>{{task.sprint.project.name}}</td>
                     <td>{{task.sprint}}</td>
                     <td>{{task.status}}</td>
                     <td>{{task.subtask}}</td>

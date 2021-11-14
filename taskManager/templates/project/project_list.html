@@ -95,7 +95,7 @@
         </tr>
         {% for task in tasks %}
             <tr>
-                <td>{{task.projectname}}</td>
+                <td>{{task.sprint.project.name}}</td>
                 <td>{{task.sprint}}</td>
                 <td><a href="{% url 'task' task.pk %}">{{task.title}}</a></td>                
                 <td>{{task.status}}</td>
@@ -106,4 +106,5 @@
             {% endfor %}
     </table>
 </div>
+
 {% endblock content %}
