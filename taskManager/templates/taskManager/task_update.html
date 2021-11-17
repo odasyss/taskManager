@@ -37,6 +37,10 @@
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
                 <div class="nav_list"> 
+                    <a href="{% url 'project_list' %}" class="nav_link">
+                        <img width="30px" src="/static/images/folder-icon.png" alt="burger menu">
+                        <span class="nav_name">Project</span>
+                    </a>        
                     <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
@@ -45,7 +49,6 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-
                     <a href="#" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
@@ -63,7 +66,11 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input class="button" type="submit" value="Submit">
+               
+
+                <div class="btn-add-task">            
+                    <input class="btn-form" type="submit" value="Submit">
+                </div>
             </form>
         </div>
     </div>

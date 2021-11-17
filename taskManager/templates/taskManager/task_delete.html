@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/task.css' %}">
     <link rel="stylesheet" href="{% static 'css/task_delete.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_form.css' %}">
     <div class="header-back-button">
         <a href="{% url 'tasks' %}">&#8592; Back</a>
     </div>
@@ -34,7 +35,11 @@
                     <img class="bx bx-menu" id="header-toggle" width="30px" src="/static/images/app-icon.png" alt="burger menu">
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
-                <div class="nav_list"> 
+                <div class="nav_list">  
+                    <a href="{% url 'project_list' %}" class="nav_link">
+                        <img width="30px" src="/static/images/folder-icon.png" alt="burger menu">
+                        <span class="nav_name">Project</span>
+                    </a>  
                     <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
@@ -43,7 +48,6 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-
                     <a href="#" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
@@ -62,7 +66,9 @@
             <form method="POST">
                 {% csrf_token %}
                 <p>Are your sure you want to delete this task? <b>"{{tasks}}"</b> </p>
-                <input class="button" type="submit" value="Delete Task">
+                <div class="btn-add-task">            
+                    <input class="btn-form" type="submit" value="Delete Task">
+                </div>
             </form>
         </div>
     </div>

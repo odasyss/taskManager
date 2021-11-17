@@ -8,13 +8,13 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from taskManager.models import Task
+from taskManager.models import Project
 
 class UserSignUpListView(FormView):
     template_name = 'user/user_sign_up.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('project_list')
 
     def form_valid(self, form):
         user = form.save()
@@ -24,7 +24,7 @@ class UserSignUpListView(FormView):
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return redirect('tasks')
+            return redirect('project_list')
         return super(UserSignUpListView, self).get(*args, **kwargs)
 
 
@@ -35,4 +35,4 @@ class UserLoginListView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy('tasks')
+        return reverse_lazy('project_list')
