@@ -2,13 +2,14 @@
 {% block content %}
 {% load static %}
 <div class="header-back-button">
-    <a href="{% url 'sprint_list' %}">&#8592; Back To Board</a>
+    <a href="{% url 'board' %}">&#8592; Back To Board</a>
 </div>
 <div class="header-bar">
     <div>        
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
-        <link rel="stylesheet" href="{% static 'css/sprint_list.css' %}">
+        <link rel="stylesheet" href="{% static 'css/board.css' %}">
+        
         </div> 
     </div>
 </div>
@@ -45,7 +46,7 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-                    <a href="{% url 'project_list' %}" class="nav_link">
+                    <a href="{% url 'board' %}" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
                     </a>  
@@ -54,41 +55,127 @@
         </nav>
     </div>  
 </div>
+
 <body>
-    <div><p>Sprint <span class="info">{{tasks.sprint}}</span></p></div>
-    <!-- <div><p>Project Name <span class="info">{{tasks.projectname}}</span></p></div> -->
-    <div><p>Status <span class="info">{{tasks.status}}</span></p></div>                    
-    <div><p>Sub-Task <span class="info">{{tasks.subtask}}</span></p></div>
-    <div class="board-container"> </div>
-    <input class="button" type="button" value="Add" onclick="addEditTask()">
-    <div class="container">
-        <div id="taskList" class="listContainer">
-                <h3>New</h3>
-                <div draggable="true" class="task"><span>{{task.title}}</span>task 1</div>
-                <div draggable="true" class="task">task 2</div>
-                <div draggable="true" class="task">task 3</div>
+    <table>
+        <tr>
+            <th>Todo</th>
+            <th>In Progress</th>
+            <th>Review</th>
+            <th>Done</th>
+        </tr>
+    </table>
+    <main class="board">
+        <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Todo</h2>
+            <h2></h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="1">
+                <h3>Todo #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="2">
+                <h3>Todo #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="3">
+                <h3>Todo #3</h3>
+            </article>
         </div>
-        <div id="todoList" class="listContainer">
-                <h3>To do</h3>
-                <div draggable="true" class="task">task 4</div>
+        <div class="column column-ip" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>In Progress</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
+                <h3>IP #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
+                <h3>IP #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
+                <h3>IP #3</h3>
+            </article>
         </div>
-        <div id="completedList" class="listContainer">
-                <h3>Completed</h3>
-                <div draggable="true" class="task">task 5</div>
+        <div class="column column-review" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Review</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
+                <h3>Review #1</h3>
+                
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
+                <h3>Review #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
+                <h3>Review#3</h3>
+            </article>
         </div>
-    </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-        <h2>Add New</h2>
-        <span class="close">&times;</span>
-        <input type="text" name="taskContent" id="taskContent">
-        <input type="button" value="->" onclick="addTask()">
+        <div class="column column-done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Done</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="7">
+                <h3>Done #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="8">
+                <h3>Done #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="9">
+                <h3>Done #3</h3>
+            </article>
+
+
+
+
+
+
+
+
+    <!-- <main class="board">
+        <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Todo</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="1">
+                <h3>Todo #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="2">
+                <h3>Todo #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="3">
+                <h3>Todo #3</h3>
+            </article>
         </div>
-    </div>
+        <div class="column column-ip" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>In Progress</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
+                <h3>IP #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
+                <h3>IP #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
+                <h3>IP #3</h3>
+            </article>
+        </div>
+        <div class="column column-review" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Review</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
+                <h3>Review #1</h3>
+                
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
+                <h3>Review #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
+                <h3>Review#3</h3>
+            </article>
+        </div>
+        <div class="column column-done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Done</h2>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="7">
+                <h3>Done #1</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="8">
+                <h3>Done #2</h3>
+            </article>
+            <article class="card" draggable="true" ondragstart="drag(event)" data-id="9">
+                <h3>Done #3</h3>
+            </article> -->
+        </div>
+    </main>
 </body>    
-<script src="{% static 'js/sprint_list.js' %}"></script>  
+<script src="{% static 'js/board.js' %}"></script> 
 <script src="{% static 'js/main.js' %}"></script>  
 
 {% endblock content %}

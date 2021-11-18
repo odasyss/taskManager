@@ -7,7 +7,6 @@ from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
-    path('', TaskList.as_view(), name='tasks'),
     path('board/', BoardList.as_view(), name='board'), 
     path('board/<int:pk>/', BoardUpdate.as_view(), name='board_view'), 
 
