@@ -12,6 +12,7 @@ urlpatterns = [
     path('board/<int:pk>/', BoardUpdate.as_view(), name='board_view'), 
 
 
+    path('task/', TaskList.as_view(), name='tasks'),
     path('register/', UserSignUpListView.as_view(), name='user_sign_up'),
     path('login/', UserLoginListView.as_view(), name='user_login'),
     path('logout/', LogoutView.as_view(next_page='user_login'), name='user_logout'),
@@ -27,7 +28,7 @@ urlpatterns = [
     path('sprint-update/<int:pk>/', SprintUpdate.as_view(), name='sprint_update'), 
     path('sprint-delete/<int:pk>/', SprintDeleteView.as_view(), name='sprint_delete'),
 
-    path('project/', ProjectListView.as_view(), name='project_list'), 
+    path('', ProjectListView.as_view(), name='project_list'), 
     path('project-create/', ProjectCreate.as_view(), name='project_form'), 
     path('project/<int:pk>/', ProjectView.as_view(), name='project'), 
     path('project-update/<int:pk>/', ProjectUpdate.as_view(), name='project_update'), 

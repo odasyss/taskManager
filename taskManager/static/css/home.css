@@ -7,7 +7,7 @@
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB; 
     --normal-font-size: 1rem;
-    --z-fixed: 100;
+    --z-fixed: 105;
     --header-color: rgba(196, 196, 196, 0.5);
 }
 
@@ -186,7 +186,7 @@ a {
         padding: 1rem 1rem 0 0;
     }
     .show {
-        width: calc(var(--nav-width) + 156px);    
+        width: calc(var(--nav-width) + 183px);    
     }
     .body-pd{
         padding-left: calc(var(--nav-width) + 188px);

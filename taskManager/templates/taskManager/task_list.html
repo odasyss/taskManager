@@ -32,7 +32,11 @@
                     <img class="bx bx-menu" id="header-toggle" width="30px" src="/static/images/app-icon.png" alt="burger menu">
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
-                <div class="nav_list"> 
+                <div class="nav_list">  
+                    <a href="{% url 'project_list' %}" class="nav_link">
+                        <img width="30px" src="/static/images/folder-icon.png" alt="burger menu">
+                        <span class="nav_name">Project</span>
+                    </a> 
                     <a href="{% url 'tasks' %}" class="nav_link active">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
@@ -41,11 +45,10 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-
-                    <a href="{% url 'project_list' %}" class="nav_link">
+                    <a href="#" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
-                    </a>  
+                    </a>
                 </div>
             </div>
         </nav>
