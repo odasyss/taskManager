@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <!--<h1>Hello {{request.user|title}}</h1> -->
-        <h1>Project</h1>
+        <h1>PROJECT</h1>
     </div>
 </div>
 
@@ -74,8 +74,7 @@
             
             <td>
                 <div style="margin: 22px 0px;">
-                    <span><a href="{% url 'project' project.pk %}"class="btn btn-style btn-detail">Detail</a> </span> 
-                    <span><a href="{% url 'project_update' project.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
+                     <span><a href="{% url 'project_update' project.pk %}" class="btn btn-style btn-edit">Edit</a> </span> 
                     <span><a href="{% url 'project_delete' project.pk %}" class="btn btn-style btn-delete">Delete</a> </span> 
                 </div>
             </td>

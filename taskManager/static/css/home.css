@@ -32,6 +32,12 @@ a {
     color: var(--title-background);
 }
 
+span.status-style {
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
 .header {
     width: 100%;
     height: var(--header-height);

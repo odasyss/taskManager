@@ -1,5 +1,5 @@
 from django.urls import path
-from .view.sprint.views import SprintCreate, SprintDeleteView, SprintUpdate, DeleteView, SprintViewSet, SprintUpdate, SprintListView, BoardList,BoardUpdate
+from .view.sprint.views import SprintCreate, SprintDeleteView, SprintUpdate, DeleteView, SprintViewSet, SprintUpdate, SprintListView,  BoardList,BoardUpdate
 from .view.task.views import TaskList,TaskDetail, TaskCreate, TaskUpdate, DeleteView
 from .view.user.views import UserSignUpListView, UserLoginListView
 from .view.project.views import ProjectCreate, ProjectDeleteView, ProjectUpdate, ProjectView, ProjectListView

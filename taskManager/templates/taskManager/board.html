@@ -9,14 +9,9 @@
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <link rel="stylesheet" href="{% static 'css/sprint_list.css' %}">
-        <h1>Hello {{request.user|title}}</h1>
-            <!--<select>
-                <option selected>---------</option>
-                {% for project in object_list %}
-                    <option>{{project.name}}</option>
-                {% endfor %}
-              </select> -->
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/board.css' %}">
+        <h1 style="color:black">BOARD</h1>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         </div> 
     </div>
 </div>
@@ -36,7 +31,7 @@
         </div>
     </div>
     </header>
-    
+
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
@@ -45,7 +40,11 @@
                     <span class="nav_logo-name">Scrum Manager</span>
                 </a>
                 <div class="nav_list"> 
-                    <a href="{% url 'tasks' %}" class="nav_link active">
+                    <a href="{% url 'project_list' %}" class="nav_link">
+                        <img width="30px" src="/static/images/folder-icon.png" alt="burger menu">
+                        <span class="nav_name">Project</span>
+                    </a>    
+                    <a href="{% url 'tasks' %}" class="nav_link">
                         <img width="35px" src="/static/images/task-icon.png" alt="burger menu">
                         <span class="nav_name">Task</span>
                     </a>
@@ -53,10 +52,10 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-                    <a href="{% url 'board' %}" class="nav_link">
+                    <a href="{% url 'board' %}" class="nav_link active">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
-                    </a>  
+                    </a>
                 </div>
             </div>
         </nav>
@@ -71,13 +70,62 @@
         <div class="content">
         {% for sprint in sprints %}
             {% if project.name == sprint.project.name %}
-                
+
                     <div class="background-sprint">
                         <p><span class="sprint-title">{{sprint.name}} </span><span>{{sprint.start}} - {{sprint.end}}</span>
                         </p> 
-                        <span><a href="{% url 'board_view' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span>
+                        <!--<span><a href="{% url 'board_view' sprint.pk %}" class="btn btn-style btn-edit">Edit</a> </span> -->
+                        <main class="board">
+                            <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <h2>Todo</h2>
+                                {% for task in tasks %}
+                                    {% if sprint.name == task.sprint.name %}
+                                        {% if task.status == 'Todo' %}
+                                            <article class="card" draggable="true" ondragstart="drag(event)" data-id= {{forloop.counter}}>
+                                                <h3>{{task.title}}</h3>
+                                            </article>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="column column-ip" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <h2>In Progress</h2>
+                                {% for task in tasks %}
+                                    {% if sprint.name == task.sprint.name %}
+                                        {% if task.status == 'Progress' %}
+                                            <article class="card" draggable="true" ondragstart="drag(event)" data-id={{forloop.counter}}>
+                                                <h3>{{task.title}}</h3>
+                                            </article>
+                                        {% endif %}
+                                    {% endif %}        
+                                {% endfor %}
+                            </div>
+                            <div class="column column-review" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <h2>Review</h2>
+                                {% for task in tasks %}
+                                    {% if sprint.name == task.sprint.name %}
+                                        {% if task.status == 'Review' %}
+                                            <article class="card" draggable="true" ondragstart="drag(event)" data-id={{forloop.counter}}>
+                                                <h3>{{task.title}}</h3>
+                                            </article>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="column column-done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <h2>Done</h2>
+                                {% for task in tasks %}
+                                    {% if sprint.name == task.sprint.name %}
+                                        {% if task.status == 'Done' %}
+                                            <article class="card" draggable="true" ondragstart="drag(event)" data-id={{forloop.counter}}>
+                                                <h3>{{task.title}}</h3>
+                                            </article>
+                                        {% endif %}    
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </main>
                     </div>
-                
             {% endif %}
         {% endfor %} </div> <br />
         <br />
@@ -85,5 +133,6 @@
     {% endfor %}
 </body>    
 <script src="{% static 'js/sprint_list.js' %}"></script>  
+<script src="{% static 'js/board.js' %}"></script> 
 <script src="{% static 'js/main.js' %}"></script>  
 {% endblock content %}

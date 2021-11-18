@@ -1,11 +1,9 @@
 .background-edit {
     margin: auto;
-    padding: auto;
     width: 60%;
     border-radius: 1rem;
     background-color: #f2f2f2;
-    padding: 3rem;
-    height: 100%;
+    padding: 6rem;
 }
 
 .edit-title {

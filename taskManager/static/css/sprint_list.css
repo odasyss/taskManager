@@ -4,11 +4,12 @@ body {
 
 span{
     margin-right: 3rem;
+    color: black;
 }
 
 .background-sprint {
     margin: auto;
-    width: 70%;
+    width: 100%;
     border-radius: 1rem;
     background-color: #f2f2f2;
     padding: 1rem;
@@ -17,7 +18,8 @@ span{
 }
 
 .task-container {
-    display: inline-block;
+    /*display: inline-block;*/
+    box-sizing: border-box;
     width: 100%;
     background-color: #DAF4FC;
     color: rgb(78, 75, 75);
@@ -37,6 +39,7 @@ span{
 .sprint-title{
     font-size: 2rem;
     font-weight: bold;
+    color: black;
 }
 
 .align-buttons {
@@ -79,6 +82,31 @@ span{
     display: none;
     overflow: hidden;
     background-color:white;
+    border: 1px solid #7a7a7a;
+}
+
+.project-container {
+    padding: 20px 30px;
+}
+
+
+.row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 10%;
+    padding: 10px;
+    height: 300px; 
+  }
+
+.row-style {
+    flex: 1 1 auto;
+}
+
+.row-container {
+    display: flex;
+}
     border: 1px solid #7a7a7a;
 }
 

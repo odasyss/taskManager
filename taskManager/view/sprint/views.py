@@ -92,6 +92,6 @@ class BoardList(ListView):
 class BoardUpdate(LoginRequiredMixin, UpdateView):
     model = Sprint
     fields = '__all__'
-    context_object_name = 'board_view'
+    context_object_name = 'board'
     template_name = "taskManager/board_view.html"
-    success_url = reverse_lazy('board_view')
+    success_url = reverse_lazy('board')

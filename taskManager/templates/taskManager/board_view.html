@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
         <link rel="stylesheet" href="{% static 'css/board.css' %}">
-        
+
         </div> 
     </div>
 </div>
@@ -29,7 +29,7 @@
         </div>
     </div>
     </header>
-    
+
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
@@ -65,6 +65,17 @@
             <th>Done</th>
         </tr>
     </table>
+    <h1 style="color:black"> board {{board.name}}</h1>
+    <h1 style="color:black"> board {{task.title}}</h1>
+    
+
+    
+
+    
+    {% for board.task in tasks %}    
+    <h1 style="color:black">{{task.title}}</h1>
+
+    {% endfor %}
     <main class="board">
         <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Todo</h2>
@@ -95,7 +106,7 @@
             <h2>Review</h2>
             <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
                 <h3>Review #1</h3>
-                
+
             </article>
             <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
                 <h3>Review #2</h3>
@@ -115,63 +126,6 @@
             <article class="card" draggable="true" ondragstart="drag(event)" data-id="9">
                 <h3>Done #3</h3>
             </article>
-
-
-
-
-
-
-
-
-    <!-- <main class="board">
-        <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Todo</h2>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="1">
-                <h3>Todo #1</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="2">
-                <h3>Todo #2</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="3">
-                <h3>Todo #3</h3>
-            </article>
-        </div>
-        <div class="column column-ip" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>In Progress</h2>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
-                <h3>IP #1</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
-                <h3>IP #2</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
-                <h3>IP #3</h3>
-            </article>
-        </div>
-        <div class="column column-review" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Review</h2>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
-                <h3>Review #1</h3>
-                
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
-                <h3>Review #2</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
-                <h3>Review#3</h3>
-            </article>
-        </div>
-        <div class="column column-done" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Done</h2>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="7">
-                <h3>Done #1</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="8">
-                <h3>Done #2</h3>
-            </article>
-            <article class="card" draggable="true" ondragstart="drag(event)" data-id="9">
-                <h3>Done #3</h3>
-            </article> -->
         </div>
     </main>
 </body>    

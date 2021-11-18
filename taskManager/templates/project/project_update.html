@@ -4,17 +4,17 @@
 {% block content %}
 
 <div class="header-back-button">
-    <!-- <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/task.css' %}">
-    <link rel="stylesheet" href="{% static 'css/project_update.css' %}"> -->
     <div class="header-back-button">
         <a href="{% url 'project_list' %}">&#8592; Back</a>
     </div>
 </div>
+
 <div class="header-bar">
     <div>        
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/task.css' %}">
+        <link rel="stylesheet" href="{% static 'css/task_update.css' %}">
+        <link rel="stylesheet" href="{% static 'css/task_form.css' %}">
     </div>
 </div>
 
@@ -66,19 +66,18 @@
     <script src="{% static 'js/main.js' %}"></script>  
 </div>
 
-    <h1 class="edit-title"> EDIT Project</h1>
-    <div class="background-edit">  
-        <div class="form-container">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input class="button" type="submit" value="Submit">
-            </form>
-        </div>
+<h1 class="edit-title"> EDIT PROJECT</h1>
+<div class="background-edit">  
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="btn-add-task">            
+                <input class="btn-form" type="submit" value="Submit">
+            </div>
+        </form>
     </div>
-
-
-    {% endblock content %}
-
+</div>
+{% endblock content %}
     
     

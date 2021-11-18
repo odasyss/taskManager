@@ -6,8 +6,11 @@
 <div class="header-bar">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/task.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_update.css' %}">
+    <link rel="stylesheet" href="{% static 'css/task_form.css' %}">
     <a href="{% url 'project_list' %}">&#8592; Back</a>
 </div>
+
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
@@ -44,9 +47,6 @@
                         <img width="30px" src="/static/images/backlog-icon.png" alt="burger menu">
                         <span class="nav_name">Backlog</span>
                     </a>
-
-                                     
-
                     <a href="{% url 'board' %}" class="nav_link">
                         <img width="30px" src="/static/images/board-icon.png" alt="burger menu">
                         <span class="nav_name">Board</span>
@@ -59,13 +59,17 @@
     <script src="{% static 'js/main.js' %}"></script>  
 </body>
 
-
-<div class="card-body">
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input class="button" type="submit" value="Submit">
-    </form>
+<h1 class="edit-title">CREATE PROJECT</h1>
+<div class="background-edit">  
+    <div class="form-container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="btn-add-task">            
+                <input class="btn-form" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </div>
 
 
