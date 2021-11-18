@@ -76,3 +76,22 @@ class SprintUpdate(LoginRequiredMixin, UpdateView):
     fields = '__all__'
     template_name = "sprint/sprint_update.html"
     success_url = reverse_lazy('tasks')
+
+class BoardList(ListView):
+    model = Sprint
+    context_object_name = 'board'
+    template_name = "taskManager/board.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(BoardList, self).get_context_data(**kwargs)   
+        context['projects'] = Project.objects.all()
+        context['sprints'] = Sprint.objects.all()
+        context['tasks'] = Task.objects.all()
+        return context
+
+class BoardUpdate(LoginRequiredMixin, UpdateView):
+    model = Sprint
+    fields = '__all__'
+    context_object_name = 'board_view'
+    template_name = "taskManager/board_view.html"
+    success_url = reverse_lazy('board_view')

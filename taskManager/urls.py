@@ -1,5 +1,5 @@
 from django.urls import path
-from .view.sprint.views import SprintCreate, SprintDeleteView, SprintUpdate, DeleteView, SprintViewSet, SprintUpdate, SprintListView
+from .view.sprint.views import SprintCreate, SprintDeleteView, SprintUpdate, DeleteView, SprintViewSet, SprintUpdate, SprintListView, BoardList,BoardUpdate
 from .view.task.views import TaskList,TaskDetail, TaskCreate, TaskUpdate, DeleteView
 from .view.user.views import UserSignUpListView, UserLoginListView
 from .view.project.views import ProjectCreate, ProjectDeleteView, ProjectUpdate, ProjectView, ProjectListView
@@ -8,6 +8,10 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', TaskList.as_view(), name='tasks'),
+    path('board/', BoardList.as_view(), name='board'), 
+    path('board/<int:pk>/', BoardUpdate.as_view(), name='board_view'), 
+
+
     path('register/', UserSignUpListView.as_view(), name='user_sign_up'),
     path('login/', UserLoginListView.as_view(), name='user_login'),
     path('logout/', LogoutView.as_view(next_page='user_login'), name='user_logout'),
