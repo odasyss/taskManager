@@ -23,6 +23,7 @@ class Sprint(models.Model):
     class Meta:
         ordering = ['name']
 
+
 class Task(models.Model):
     STATUS_CHOICES = (
         ('Todo', 'Todo'),
@@ -38,7 +39,7 @@ class Task(models.Model):
     sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, blank=True, null=True)
     status = models.CharField(max_length=30, choices=STATUS_CHOICES)
     subtask = models.ForeignKey('self',on_delete=models.CASCADE, null=True, blank=True)
-
+    
     def __str__(self):
         return self.title
 
