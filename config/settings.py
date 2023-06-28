@@ -10,13 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 
 """
-# from dotenv import load_dotenv
+
 from pathlib import Path
-# load_dotenv()
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# from dotenv import load_dotenv
+# import os
+# load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +31,7 @@ SECRET_KEY = 'django-insecure-y_26x29%rsx*^b@=a*4u@a9ddmz8)43uc_n^8i6gnxl@uj08@u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 
 # Application definition
@@ -83,6 +86,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'PGDATABASE' : 'railway',
+        # 'DATABASE_URL': 'postgresql://postgres:eqEDsYIZAQ8qI5CNNPDF@containers-us-west-134.railway.app:7751/railway',
+        # 'PGHOST' :'containers-us-west-134.railway.app',
+        # 'PGPASSWORD' : 'eqEDsYIZAQ8qI5CNNPDF',
+        # 'PGPORT' :'7751',
+        # 'PGUSER' : 'postgres',
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'URL': os.getenv('DATABASE_URL'),
     #     'NAME': os.getenv('PGDATABASE'),
@@ -90,6 +100,8 @@ DATABASES = {
     #     'PASSWORD': os.getenv('PGPASSWORD'),
     #     'HOST': os.getenv('PGHOST'),
     #     'PORT': os.getenv('PGPORT'),
+    
+    
 
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
