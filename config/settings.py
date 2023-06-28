@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
+    'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'URL': os.getenv('DATABASE_URL'),
     #     'NAME': os.getenv('PGDATABASE'),
@@ -91,9 +91,9 @@ DATABASES = {
     #     'HOST': os.getenv('PGHOST'),
     #     'PORT': os.getenv('PGPORT'),
 
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
