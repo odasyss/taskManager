@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # from dotenv import load_dotenv
-# import os
+import os
 # load_dotenv()
 import dj_database_url
 
@@ -91,11 +91,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgres://taskmanager_gonv_user:Kz1lfh458k6lb8UPONF5dRHIAzaaKZeL@dpg-cikgjddgkuvinfj0mq00-a/taskmanager_gonv',
-        conn_max_age=600
-    )
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'PGDATABASE' : 'railway',
         # 'DATABASE_URL': 'postgresql://postgres:eqEDsYIZAQ8qI5CNNPDF@containers-us-west-134.railway.app:7751/railway',
