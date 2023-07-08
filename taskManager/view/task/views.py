@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 #from taskManager.model.task.models import Task
+from django.contrib.auth.decorators import login_required
 
 from taskManager.models import Task
 
@@ -15,11 +16,12 @@ class TaskList(ListView):
     template_name = "task/task_list.html"
 
 
-class TaskDetail(LoginRequiredMixin, DetailView):
+class TaskDetail(DetailView):
     model = Task
     context_object_name = 'tasks'
     template_name = 'task/main.html'
 
+@login_required(login_url='user_login')
 class DeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'tasks'
@@ -30,6 +32,7 @@ class DeleteView(LoginRequiredMixin, DeleteView):
         owner = self.request.user
         return self.model.objects.filter(user=owner)
 
+@login_required(login_url='user_login')
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     fields = '__all__'
@@ -39,6 +42,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
 
+@login_required(login_url='user_login')
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = '__all__'

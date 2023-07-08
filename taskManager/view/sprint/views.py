@@ -7,11 +7,12 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 #from .model.task.models import Task
 from taskManager.models import Sprint, Task, Project
+from django.contrib.auth.decorators import login_required
 from django import template
 from django.contrib.auth.models import Group
 register = template.Library()
 
-class SprintViewSet(LoginRequiredMixin, DetailView):
+class SprintViewSet(DetailView):
     model = Sprint
     context_object_name = 'sprint'
     fields = '__all__'
@@ -51,6 +52,7 @@ class SprintListView(ListView):
         #context['sprint_list'] = Task.objects.all()
         #return context
 
+@login_required(login_url='user_login')
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'
@@ -61,6 +63,7 @@ class SprintDeleteView(LoginRequiredMixin, DeleteView):
     #    owner = self.request.user
     #    return self.model.objects.filter(user=owner)
 
+@login_required(login_url='user_login')
 class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
     fields = '__all__'
@@ -71,11 +74,13 @@ class SprintCreate(LoginRequiredMixin, CreateView):
         return super(SprintCreate, self).form_valid(form)
 
 
+@login_required(login_url='user_login')
 class SprintUpdate(LoginRequiredMixin, UpdateView):
     model = Sprint
     fields = '__all__'
     template_name = "sprint/sprint_update.html"
     success_url = reverse_lazy('tasks')
+
 
 class BoardList(ListView):
     model = Sprint
@@ -89,7 +94,8 @@ class BoardList(ListView):
         context['tasks'] = Task.objects.all()
         return context
 
-class BoardUpdate(LoginRequiredMixin, UpdateView):
+
+class BoardUpdate(UpdateView):
     model = Sprint
     fields = '__all__'
     context_object_name = 'board'
