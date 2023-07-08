@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,7 +33,9 @@ SECRET_KEY = 'django-insecure-y_26x29%rsx*^b@=a*4u@a9ddmz8)43uc_n^8i6gnxl@uj08@u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-b651.up.railway.app', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
 
 
 # Application definition
@@ -88,6 +91,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
+        'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://taskmanager_gonv_user:Kz1lfh458k6lb8UPONF5dRHIAzaaKZeL@dpg-cikgjddgkuvinfj0mq00-a/taskmanager_gonv',
+        conn_max_age=600
+    )
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'PGDATABASE' : 'railway',
         # 'DATABASE_URL': 'postgresql://postgres:eqEDsYIZAQ8qI5CNNPDF@containers-us-west-134.railway.app:7751/railway',
@@ -105,8 +113,8 @@ DATABASES = {
     
     
 
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
