@@ -13,7 +13,7 @@ Developed a full-stack web application using Django MVT template.Based on Jira S
 
 ## Demo
 
-[Insert gif or link to demo](https://taskmanager-579t.onrender.com)
+[Demo on Render](https://taskmanager-579t.onrender.com)
 
 
 ## Run Locally
