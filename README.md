@@ -54,8 +54,9 @@ Start the server
   
 ## Screenshots
 
-![App Screenshot])(![image](https://github.com/odasyss/taskManager/assets/71523344/931047ba-3806-4567-b0f9-403c67ec8942)
-)
+(![image](https://github.com/odasyss/taskManager/assets/71523344/931047ba-3806-4567-b0f9-403c67ec8942)
+)![image](https://github.com/odasyss/taskManager/assets/71523344/8ac60499-4b56-46f7-b49c-acee9a10fe43)
+
 
 
 ## Authors
