@@ -54,9 +54,9 @@ Start the server
   
 ## Screenshots
 
-(![image](https://github.com/odasyss/taskManager/assets/71523344/931047ba-3806-4567-b0f9-403c67ec8942)
-)![image](https://github.com/odasyss/taskManager/assets/71523344/8ac60499-4b56-46f7-b49c-acee9a10fe43)
-
+(![image](https://github.com/odasyss/taskManager/assets/71523344/14f4e992-f2e3-4414-b694-4f92b2594f6b))
+(![image](https://github.com/odasyss/taskManager/assets/71523344/20b23416-e1ad-4aab-bab9-08bbe4ffe20f))
+(![image](https://github.com/odasyss/taskManager/assets/71523344/33a59d2c-02da-4953-adf5-2a7838da06e8))
 
 
 ## Authors
