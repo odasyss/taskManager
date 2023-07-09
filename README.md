@@ -13,7 +13,7 @@ Developed a full-stack web application using Django MVT template.Based on Jira S
 
 ## Demo
 
-Insert gif or link to demo
+[Insert gif or link to demo](https://taskmanager-579t.onrender.com)
 
 
 ## Run Locally
@@ -54,9 +54,9 @@ Start the server
   
 ## Screenshots
 
-(![image](https://github.com/odasyss/taskManager/assets/71523344/14f4e992-f2e3-4414-b694-4f92b2594f6b))
-(![image](https://github.com/odasyss/taskManager/assets/71523344/20b23416-e1ad-4aab-bab9-08bbe4ffe20f))
-(![image](https://github.com/odasyss/taskManager/assets/71523344/33a59d2c-02da-4953-adf5-2a7838da06e8))
+![image](https://github.com/odasyss/taskManager/assets/71523344/14f4e992-f2e3-4414-b694-4f92b2594f6b)
+![image](https://github.com/odasyss/taskManager/assets/71523344/20b23416-e1ad-4aab-bab9-08bbe4ffe20f)
+![image](https://github.com/odasyss/taskManager/assets/71523344/33a59d2c-02da-4953-adf5-2a7838da06e8)
 
 
 ## Authors
