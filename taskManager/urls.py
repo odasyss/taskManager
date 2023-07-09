@@ -17,20 +17,20 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='user_login'), name='user_logout'),
 
     path('task/<int:pk>/', TaskDetail.as_view(), name='task'),
-    path('task-create/', TaskCreate, name='task_form'),
-    path('task-update/<int:pk>/', TaskUpdate, name='task_update'), 
-    path('task-delete/<int:pk>/', DeleteView, name='task_delete'),
+    path('task-create/', TaskCreate.as_view(), name='task_form'),
+    path('task-update/<int:pk>/', TaskUpdate.as_view(), name='task_update'), 
+    path('task-delete/<int:pk>/', DeleteView.as_view(), name='task_delete'),
 
     path('sprint/', SprintListView.as_view(), name='sprint_list'), 
-    path('sprint-create/', SprintCreate, name='sprint_form'), 
+    path('sprint-create/', SprintCreate.as_view(), name='sprint_form'), 
     path('sprint/<int:pk>/', SprintViewSet.as_view(), name='sprint'), 
-    path('sprint-update/<int:pk>/', SprintUpdate, name='sprint_update'), 
-    path('sprint-delete/<int:pk>/', SprintDeleteView, name='sprint_delete'),
+    path('sprint-update/<int:pk>/', SprintUpdate.as_view(), name='sprint_update'), 
+    path('sprint-delete/<int:pk>/', SprintDeleteView.as_view(), name='sprint_delete'),
 
     path('', ProjectListView.as_view(), name='project_list'), 
-    path('project-create/', ProjectCreate, name='project_form'), 
-    path('project/<int:pk>/', ProjectView, name='project'), 
-    path('project-update/<int:pk>/', ProjectUpdate, name='project_update'), 
-    path('project-delete/<int:pk>/', ProjectDeleteView, name='project_delete'),
+    path('project-create/', ProjectCreate.as_view(), name='project_form'), 
+    path('project/<int:pk>/', ProjectView.as_view(), name='project'), 
+    path('project-update/<int:pk>/', ProjectUpdate.as_view(), name='project_update'), 
+    path('project-delete/<int:pk>/', ProjectDeleteView.as_view(), name='project_delete'),
 
 ]

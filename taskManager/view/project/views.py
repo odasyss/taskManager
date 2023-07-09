@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 #from taskManager.model.sprint.models import Sprint
 from django.urls import reverse_lazy
 from taskManager.models import Task, Project, Sprint
-from django.contrib.auth.decorators import login_required
+
 
 
 class ProjectView(LoginRequiredMixin, DetailView):
@@ -33,20 +33,21 @@ class ProjectListView(ListView):
         context['projects'] = Project.objects.all()
         return context
 
-@login_required(login_url='user_login')
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     context_object_name = 'project'
+    login_url = '/login/'
     success_url = reverse_lazy('project_list')
     template_name = "project/project_delete.html"
 
     #def get_queryset(self):
     #    owner = self.request.user
     #    return self.model.objects.filter(user=owner)
-@login_required(login_url='user_login')
+
 class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
     fields = '__all__'
+    login_url = '/login/'
     success_url = reverse_lazy('project_list')
     template_name = "taskManager/project_form.html"
 
@@ -54,9 +55,9 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super(ProjectCreate, self).form_valid(form)
 
-@login_required(login_url='user_login')
 class ProjectUpdate(LoginRequiredMixin, UpdateView):
     model = Project
     fields = '__all__'
+    login_url = '/login/'
     template_name = "project/project_update.html"
     success_url = reverse_lazy('project_list')

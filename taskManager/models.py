@@ -11,9 +11,9 @@ class Project(models.Model):
 class Sprint(models.Model):
     name = models.CharField(max_length=50, blank=True, default='')
     description = models.TextField(blank=True, default='')
-    start = models.DateTimeField(unique=True)
-    Duration= models.DurationField()
-    end = models.DateField(unique=True)
+    start = models.DateTimeField(null=False, auto_now_add=True,)
+    Duration= models.DurationField(null=False, blank=False, default=0 )
+    end = models.DateField(blank=True, null=True, default='2026-12-31')
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=False)
 
 

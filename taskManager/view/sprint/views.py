@@ -10,6 +10,7 @@ from taskManager.models import Sprint, Task, Project
 from django.contrib.auth.decorators import login_required
 from django import template
 from django.contrib.auth.models import Group
+from django import forms
 register = template.Library()
 
 class SprintViewSet(DetailView):
@@ -52,10 +53,10 @@ class SprintListView(ListView):
         #context['sprint_list'] = Task.objects.all()
         #return context
 
-@login_required(login_url='user_login')
 class SprintDeleteView(LoginRequiredMixin, DeleteView):
     model = Sprint
     context_object_name = 'sprint'
+    login_url = '/login/'
     success_url = reverse_lazy('tasks')
     template_name = "sprint/sprint_delete.html"
 
@@ -63,24 +64,30 @@ class SprintDeleteView(LoginRequiredMixin, DeleteView):
     #    owner = self.request.user
     #    return self.model.objects.filter(user=owner)
 
-@login_required(login_url='user_login')
 class SprintCreate(LoginRequiredMixin, CreateView):
     model = Sprint
     fields = '__all__'
+    login_url = '/login/'
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(SprintCreate, self).form_valid(form)
+    widgets = {
+        'launch_date': forms.DateInput(
+            format=('%Y-%m-%d'),          # <== This line solves the issue
+            attrs={'class': 'form-control',
+                   'type': 'date'
+            }),
+    }
 
 
-@login_required(login_url='user_login')
 class SprintUpdate(LoginRequiredMixin, UpdateView):
     model = Sprint
     fields = '__all__'
+    login_url = '/login/'
     template_name = "sprint/sprint_update.html"
     success_url = reverse_lazy('tasks')
-
 
 class BoardList(ListView):
     model = Sprint
