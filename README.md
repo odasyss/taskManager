@@ -54,7 +54,8 @@ Start the server
   
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot])(![image](https://github.com/odasyss/taskManager/assets/71523344/931047ba-3806-4567-b0f9-403c67ec8942)
+)
 
 
 ## Authors
